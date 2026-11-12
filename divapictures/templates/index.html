@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Diva Frames - Memorable Pic's</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+
+<div class="sidebar">
+  <img src="{% static 'images/logo.png' %}">
+  <h2>DIVA FRAMES</h2>
+  <a href="#" onclick="goHome(); return false;">🏠 Home</a>
+  <a href="#" onclick="goToShop(); return false;">🖼️ All Frames</a>
+  <a href="/orders/">📦 My Orders</a>
+  {% if user.is_staff %}
+    <a href="/admin/">⚙️ Admin Panel</a>
+  {% endif %}
+</div>
+
+<div class="main">
+  <!-- PAGE 1 - FULL HERO BANNER -->
+   <div class="hero-banner" id="landingPage">
+   <div class="hero-text">
+    <div class="hero-badge">✨ Elegance in Every Frame ✨</div>
+  <h1>Your Memories,<br><span>Our Frames ❤️</span></h1>
+  <p>Premium Wood Frames • Starting at Rs. 99 • Delivery All Over Tamil Nadu</p>
+  <div class="hero-buttons">
+    <button class="hero-btn" onclick="goToShop()">🛍️ Shop Now →</button>
+    <a href="https://wa.me/9198XXXXXXXX"><button class="hero-btn whatsapp-btn">💬 WhatsApp Order</button></a>
+  </div>
+  <div class="hero-stats">
+      <div><b>5000+</b><br><span>Happy Customers</span></div>
+      <div><b>4.0 ⭐</b><br><span>Google Rating</span></div>
+      <div><b>24 Hrs</b><br><span>Fast Delivery</span></div>
+    </div>
+    <p style="font-size:13px; margin-top:18px; opacity:0.9;">Diva Frames . Madurai</p>
+  </div>
+</div>
+
+<!-- PAGE 2 - FRAMES -->
+  <h3 class="collection-title" id="collections"> 🎀Our Collections🎀</h3>
+
+  <div class="frames-container">
+  {% for f in frames %}
+    <div class="frame-card">
+        <img src="{{ f.image.url }}" onclick="openPopup('{{ f.image.url }}')">
+        <div class="frame-details">
+            <b class="frame-name">{{ f.name }}</b><br>
+            <small class="frame-size">{{ f.size }}</small><br>
+            <div class="frame-price">Rs. {{ f.price }}</div>
+            <a href="{% url 'order_page' f.id %}"><button class="order-btn">BUY NOW</button></a>
+        </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+<div id="popup" onclick="closePopup()">
+  <span onclick="closePopup()">×</span>
+  <img id="popupImg" src="">
+</div>
+
+<script>
+function openPopup(src){
+  document.getElementById('popupImg').src = src;
+  document.getElementById('popup').style.display = 'flex';
+}
+function closePopup(){
+  document.getElementById('popup').style.display = 'none';
+}
+function goToShop(){
+  document.getElementById('landingPage').style.display = 'none';
+  window.scrollTo(0,0);
+}
+function goHome(){
+  document.getElementById('landingPage').style.display = 'flex';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay - Diva Frames</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            text-align: center; 
+            padding-top: 100px; 
+            background: #FFF8E7; 
+        }
+        .box { 
+            background: white; 
+            width: 400px; 
+            margin: auto; 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 0 20px #ddd; 
+        }
+        button { 
+            background: #D4AF37; 
+            padding: 15px 30px; 
+            border: none; 
+            border-radius: 20px; 
+            font-weight: bold; 
+            font-size: 18px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Diva Frames</h2>
+        <h3>{{ frame.name }}</h3>
+        <p>Price: Rs. {{ frame.price }}</p>
+        <button id="rzp-button">Pay with GPay / UPI</button>
+    </div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount }}",
+    "currency": "INR",
+    "name": "Diva Frames",
+    "description": "{{ frame.name }}",
+    "order_id": "{{ razorpay_order_id }}",
+    "handler": function (response){
+        fetch('/payment/success/', {
+            method:'POST',
+            body: new URLSearchParams(response)
+        }).then(()=>{
+            alert("Payment Done! GPay Success!");
+            window.location.href = "/";
+        });
+    },
+    "theme": {"color": "#D4AF37"}
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+</body>
+</html>

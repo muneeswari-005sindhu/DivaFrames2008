@@ -1,0 +1,338 @@
+/* ========== 1. COMMON ========== */
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { margin:0; font-family:sans-serif; background:#FDF8E9; display:flex; }
+
+/* ========== 2. SIDEBAR ========== */
+.sidebar{
+  width:230px; background:#3E2723; color:white;
+  min-height:100vh; padding:20px; position:fixed; left:0; top:0;
+}
+.sidebar img{width:90px; height:90px; object-fit:cover; border-radius:10px; display:block; margin:0 auto 10px;}
+.sidebar h2{text-align:center; color:#D4AF37; font-size:20px; letter-spacing:3px; margin:0 0 25px;}
+.sidebar a{
+  display:block; color:white; text-decoration:none;
+  padding:12px 15px; border-radius:10px; margin-bottom:8px; font-weight:600;
+}
+.sidebar a:hover, .sidebar a.active{background:#D4AF37; color:#3E2723;}
+
+/* ========== 3. MAIN + WELCOME - BROWN ✅ ========== */
+.main{margin-left:270px; flex:1; padding:20px;}
+.welcome{
+  background:linear-gradient(45deg,#5C3A21,#3E2614);
+  color:#D4AF37(252, 248, 15); padding:25px; border-radius:16px; margin-bottom:20px;
+}
+.welcome h1{margin:0; font: size 32pxpx;color:#D4AF37}
+.welcome p{margin:5px 0 0; opacity:0.9;}
+.collection-title{ color:#4E342E; text-align:center; }
+
+/* ========== 4. HOME - FRAMES ========== */
+.frames-container{
+  display:flex; flex-wrap:wrap; justify-content:center; 
+  padding:25px 0; gap:22px;
+}
+.frame-card{
+  background:white; width:260px; border-radius:16px; overflow:hidden; 
+  text-align:center; padding-bottom:15px; 
+  box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
+}
+.frame-card:hover{transform: scale(1.06); box-shadow: 0 15px 30px rgba(92,58,33,0.30);}
+.frame-card img{width:100%; height:220px; object-fit:cover;}
+.frame-details{ padding:12px; }
+.frame-name{ color:#3E2723; font-weight:700; }
+.frame-size{ color:#999; }
+.frame-price{ color:#C9A227; font-weight:800; margin:6px 0; }
+.order-btn{
+  background:linear-gradient(45deg,#D4AF37,#B8962E); border:none; 
+  padding:10px 28px; border-radius:25px; cursor:pointer; font-weight:700; margin-top:8px;
+}
+
+/* ========== 5. MY ORDERS ========== */
+.order-card{
+  background:white; border-radius:16px; padding:18px;
+  margin-bottom:15px; display:flex; gap:15px; align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
+}
+.order-photo{ width:110px; height:110px; object-fit:cover; border-radius:10px; flex-shrink:0; }
+.order-info{ flex:1; }
+.order-info h3{ margin:0; color:#3E2723; }
+.order-info p{ margin:5px 0; color:#8D6E63; }
+.order-price{ text-align:right; }
+.order-price h2{ color:#C9A227; margin:0; }
+.order-status{
+  background:#D4AF37; color:white; padding:5px 15px;
+  border-radius:20px; display:inline-block; font-size:13px; font-weight:700; margin-top:8px;
+}
+.empty-box{ text-align:center; padding:50px; background:white; border-radius:16px; }
+.empty-box h3{ color:#8D6E63; }
+
+/* ========== 6. ORDER FORM ========== */
+.box {
+  max-width: 500px; margin: 30px auto; background: white;
+  padding: 30px; border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(92,58,33,0.15);
+  border-top: 6px solid #5C3A21;
+}
+.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; }
+.box input, .box textarea {
+  width: 100%; padding: 13px; border: 2px solid #E8D5B7;
+  border-radius: 10px; background: #FFFBF2; outline: none;
+}
+.box input:focus, .box textarea:focus { border-color: #5C3A21; background: white; }
+.box button {
+  width: 100%; margin-top: 25px; padding: 15px; border: none;
+  border-radius: 12px; background: #5C3A21; color: white;
+  font-size: 17px; font-weight: bold; cursor: pointer;
+}
+
+/* ========== 7. POPUP ========== */
+#popup{
+  display:none; position:fixed; top:0; left:0;
+  width:100%; height:100%; background:rgba(0,0,0,0.85);
+  justify-content:center; align-items:center; z-index:999;
+}
+#popup img{max-width:90%; max-height:80%; border-radius:15px; border:5px solid white;}
+#popup span{position:absolute; top:20px; right:25px; color:white; font-size:35px; cursor:pointer; font-weight:bold;}
+
+/* ========== 8. MOBILE ========== */
+@media(max-width:700px){
+  body{flex-direction:column;}
+  .sidebar{position:relative; width:auto; min-height:auto;}
+  .main{margin-left:0;}
+  .order-card{flex-direction:column; text-align:center;}
+  .order-price{text-align:center;}
+}
+#Order_form.css
+/* ========== 1. COMMON ========== */
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { margin:0; font-family:sans-serif; background:#FDF8E9; display:flex; }
+
+/* ========== 2. SIDEBAR ========== */
+.sidebar{
+  width:230px; background:#3E2723; color:white;
+  min-height:100vh; padding:20px; position:fixed; left:0; top:0;
+}
+.sidebar img{width:90px; height:90px; object-fit:cover; border-radius:10px; display:block; margin:0 auto 10px;}
+.sidebar h2{text-align:center; color:#D4AF37; font-size:20px; letter-spacing:3px; margin:0 0 25px;}
+.sidebar a{
+  display:block; color:white; text-decoration:none;
+  padding:12px 15px; border-radius:10px; margin-bottom:8px; font-weight:600;
+}
+.sidebar a:hover, .sidebar a.active{background:#D4AF37; color:#3E2723;}
+
+/* ========== 3. MAIN + WELCOME - BROWN ✅ ========== */
+.main{margin-left:270px; flex:1; padding:20px;}
+.welcome{
+  background:linear-gradient(45deg,#5C3A21,#3E2614);
+  color:white; padding:25px; border-radius:16px; margin-bottom:20px;
+}
+.welcome h1{margin:0; font-size:30px;}
+.welcome p{margin:5px 0 0; opacity:0.9;}
+.collection-title{ color:#4E342E; text-align:center; }
+
+/* ========== 4. HOME - FRAMES ========== */
+.frames-container{
+  display:flex; flex-wrap:wrap; justify-content:center; 
+  padding:25px 0; gap:22px;
+}
+.frame-card{
+  background:white; width:260px; border-radius:16px; overflow:hidden; 
+  text-align:center; padding-bottom:15px; 
+  box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
+}
+.frame-card:hover{transform: scale(1.06); box-shadow: 0 15px 30px rgba(92,58,33,0.30);}
+.frame-card img{width:100%; height:220px; object-fit:cover;}
+.frame-details{ padding:12px; }
+.frame-name{ color:#3E2723; font-weight:700; }
+.frame-size{ color:#999; }
+.frame-price{ color:#C9A227; font-weight:800; margin:6px 0; }
+.order-btn{
+  background:linear-gradient(45deg,#D4AF37,#B8962E); border:none; 
+  padding:10px 28px; border-radius:25px; cursor:pointer; font-weight:700; margin-top:8px;
+}
+
+/* ========== 5. MY ORDERS ========== */
+.order-card{
+  background:white; border-radius:16px; padding:18px;
+  margin-bottom:15px; display:flex; gap:15px; align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
+}
+.order-photo{ width:110px; height:110px; object-fit:cover; border-radius:10px; flex-shrink:0; }
+.order-info{ flex:1; }
+.order-info h3{ margin:0; color:#3E2723; }
+.order-info p{ margin:5px 0; color:#8D6E63; }
+.order-price{ text-align:right; }
+.order-price h2{ color:#C9A227; margin:0; }
+.order-status{
+  background:#D4AF37; color:white; padding:5px 15px;
+  border-radius:20px; display:inline-block; font-size:13px; font-weight:700; margin-top:8px;
+}
+.empty-box{ text-align:center; padding:50px; background:white; border-radius:16px; }
+.empty-box h3{ color:#8D6E63; }
+
+/* ========== 6. ORDER FORM PAGE - UN ORDER.HTML CSS ELLAM INGA ✅ ========== */
+.order-page{ background:#FFF8E7; margin:0; padding:20px; display:block; }
+.box {
+  max-width: 500px; margin: 30px auto; background: white;
+  padding: 30px; border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(92,58,33,0.15);
+  border-top: 6px solid #5C3A21;
+}
+.box h2 { color: #5C3A21; text-align: center; margin: 0; font-size: 24px; }
+.box .price { text-align: center; color: #A67C52; font-size: 18px; font-weight: bold; margin: 8px 0 25px; }
+.box .size { text-align: center; color: #888; margin-top: -18px; margin-bottom: 20px; }
+.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; font-size: 14px; }
+.box input, .box textarea {
+  width: 100%; padding: 13px; border: 2px solid #E8D5B7;
+  border-radius: 10px; background: #FFFBF2; font-size: 15px; outline: none;
+}
+.box input:focus, .box textarea:focus { border-color: #5C3A21; background: white; }
+.box textarea { height: 80px; resize: none; }
+.file-box {
+  border: 2px dashed #A67C52; padding: 15px; border-radius: 10px;
+  text-align: center; background: #FFFBF2; color: #5C3A21; cursor: pointer;
+}
+.box button {
+  width: 100%; margin-top: 25px; padding: 15px; border: none;
+  border-radius: 12px; background: #5C3A21; color: white;
+  font-size: 17px; font-weight: bold; cursor: pointer;
+}
+.box button:hover { background: #3E2614; }
+.back { display: block; text-align: center; margin-top: 15px; color: #A67C52; text-decoration: none; font-size: 14px; }
+
+/* ========== 7. POPUP ========== */
+#popup{
+  display:none; position:fixed; top:0; left:0;
+  width:100%; height:100%; background:rgba(0,0,0,0.85);
+  justify-content:center; align-items:center; z-index:999;
+}
+#popup img{max-width:90%; max-height:80%; border-radius:15px; border:5px solid white;}
+#popup span{position:absolute; top:20px; right:25px; color:white; font-size:35px; cursor:pointer; font-weight:bold;}
+
+/* ========== 8. MOBILE ========== */
+@media(max-width:700px){
+  body{flex-direction:column;}
+  .sidebar{position:relative; width:auto; min-height:auto;}
+  .main{margin-left:0;}
+  .order-card{flex-direction:column; text-align:center;}
+  .order-price{text-align:center;}
+}
+#Order.css
+/* ========== ORDER FORM PAGE ========== */
+.order-page{ background:#FFF8E7; margin:0; padding:20px; display:block; }
+.box {
+  max-width: 500px; margin: 30px auto; background: white;
+  padding: 30px; border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(92,58,33,0.15);
+  border-top: 6px solid #5C3A21;
+}
+.box h2 { color: #5C3A21; text-align: center; margin: 0; font-size: 24px; }
+.box .price { text-align: center; color: #A67C52; font-size: 18px; font-weight: bold; margin: 8px 0 25px; }
+.box .size { text-align: center; color: #888; margin-top: -18px; margin-bottom: 20px; }
+.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; font-size: 14px; }
+.box input, .box textarea {
+  width: 100%; padding: 13px; border: 2px solid #E8D5B7;
+  border-radius: 10px; background: #FFFBF2; font-size: 15px; outline: none;
+}
+.box input:focus, .box textarea:focus { border-color: #5C3A21; background: white; }
+.box textarea { height: 80px; resize: none; }
+.box button {
+  width: 100%; margin-top: 25px; padding: 15px; border: none;
+  border-radius: 12px; background: #5C3A21; color: white;
+  font-size: 17px; font-weight: bold; cursor: pointer;
+}
+.box button:hover { background: #3E2614; }
+.back { display: block; text-align: center; margin-top: 15px; color: #A67C52; text-decoration: none; font-size: 14px; }
+
+/* ========== ORDER STATUS COLOURS ========== */
+.status-Pending{ background:#FF9800; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
+.status-Confirmed{ background:#2196F3; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
+.status-Shipped{ background:#9C27B0; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
+.status-Delivered{ background:#4CAF50; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
+.status-Cancelled{ background:#F44336; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
+
+/* ========== FULL SCREEN LANDING PAGE ========== */
+.hero-banner{
+  background: linear-gradient(135deg, rgba(62,39,35,0.82), rgba(120,72,20,0.65), rgba(212,175,55,0.45)), url('/static/images/BCream.jpeg');
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFF8E7;
+}
+.hero-text{
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-badge{
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.hero-text h1{
+  font-size: 64px;
+  margin: 0;
+  line-height: 1.1;
+  color: #4A2C0A;
+  text-shadow: 2px 2px 0px #fff, 3px 3px 15px rgba(0,0,0,0.15);
+  text-align: center;
+}
+.hero-text h1 span{
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FFF3B0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-text p{
+  font-size: 18px;
+  margin: 18px 0 25px;
+  color: #FFF8E7;
+}
+.hero-buttons{ display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.hero-btn{
+  background: linear-gradient(45deg,#FFD700,#FF8C00);
+  color: #3E2723;
+  border: none;
+  padding: 16px 38px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255,140,0,0.5);
+}
+.hero-btn:hover{ transform: scale(1.08); }
+.whatsapp-btn{ background: #25D366 !important; color: white !important; }
+.hero-stats{
+  display: flex;
+  gap: 35px;
+  margin-top: 30px;
+  background: rgba(255,255,255,0.18);
+  padding: 15px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.hero-stats div b{ font-size: 22px; color: #FFD700; }
+.hero-stats div span{ font-size: 12px; opacity: 0.9; }
+@media(max-width:700px){
+  .hero-text h1{ font-size: 36px; }
+  .hero-stats{ gap: 18px; padding: 12px 18px; }
+}

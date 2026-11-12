@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Orders - Diva Frames</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="display:flex;">
+
+<div class="sidebar">
+  <img src="{% static 'images/logo.png' %}">
+  <h2>DIVA FRAMES</h2>
+  <a href="/">🏠 Home</a>
+  <a href="/">🖼️ All Frames</a>
+  <a href="/orders/" style="background:#D4AF37; color:#3E2723;">📦 My Orders</a>
+  <!-- ITHU THAAN NAAN MAATHINA IDAM ✅ -->
+  <!-- Owner Login panniruntha mattum thaan Admin Link theriyum -->
+  {% if user.is_staff %}
+    <a href="/admin/">⚙️ Admin Panel</a>
+  {% endif %}
+</div>
+
+<div class="main">
+  <div class="welcome">
+    <h1>📦 My Orders</h1>
+    <p>Your Order History</p>
+  </div>
+
+  {% if orders %}
+    {% for order in orders %}
+      <div class="frame-card" style="width:100%; text-align:left; padding:20px; margin-bottom:15px;">
+        <div style="display:flex; gap:15px; align-items:center;">
+          <img src="{{ order.frame.image.url }}" style="width:120px; height:120px; object-fit:cover; border-radius:10px;">
+          <div style="flex:1;">
+            <h3 style="margin:0; color:#3E2723;">{{ order.frame.name }}</h3>
+            <p style="margin:5px 0; color:#8D6E63;">Size: {{ order.frame.size }}</p>
+            <p style="margin:5px 0; color:#8D6E63;">Name: {{ order.customer_name }}</p>
+            <p style="margin:5px 0; color:#8D6E63;">Phone: {{ order.phone }}</p>
+            <p style="margin:5px 0; color:#8D6E63;">Address: {{ order.address }}</p>
+          </div>
+          <div style="text-align:right;">
+            <h2 style="color:#C9A227; margin:0;">Rs. {{ order.frame.price }}</h2>
+            <p class="status-{{ order.status }}" style="color:white; padding:5px 15px; border-radius:20px; display:inline-block; margin-top:10px; font-weight:700;">
+              {{ order.status }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div style="text-align:center; padding:50px;">
+      <h3 style="color:#8D6E63;">Ipa varaikum order illa da 😅</h3>
+      <a href="/"><button class="order-btn">Shop Now</button></a>
+    </div>
+  {% endif %}
+
+</div>
+
+</body>
+</html>
