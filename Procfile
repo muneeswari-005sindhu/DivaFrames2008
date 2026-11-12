@@ -1,0 +1,1 @@
+web: gunicorn DivaFrames.wsgi:application
