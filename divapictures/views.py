@@ -33,7 +33,6 @@ def order_page(request, frame_id):
             quantity=1,
             status='Pending'
         )
-        # Details save pannathum, Direct ah Payment Link ku anuppidu
         return redirect(frame.payment_link)
     
     return render(request, 'order_form.html', {'frame': frame})
@@ -43,7 +42,7 @@ def my_orders(request):
     return render(request, 'orders.html', {'orders': orders})
 
 
-# 4. PAYMENT CREATE - Old function, ipa theva illa but irukkatum
+# 4. PAYMENT CREATE 
 def create_payment(request, id):
     frame = get_object_or_404(PhotoFrame, id=id)
     amount = int(frame.price * 100)
