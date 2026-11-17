@@ -1,60 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* ========== 1. COMMON ========== */
-* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-body { margin:0; font-family:sans-serif; background:#FDF8E9; display:flex; }
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+html, body { margin:0; padding:0; width:100%; max-width:100%; overflow-x:hidden; }
+body { background:#FFF8E7; display:flex; }
+img { max-width:100%; }
 
 /* ========== 2. SIDEBAR ========== */
 .sidebar{
   width:230px; background:#3E2723; color:white;
-  min-height:100vh; padding:20px; position:fixed; left:0; top:0;
+  min-height:100vh; padding:20px; position:fixed; left:0; top:0; z-index:100;
+  display:none;
 }
-.sidebar img{width:90px; height:90px; object-fit:cover; border-radius:10px; display:block; margin:0 auto 10px;}
-.sidebar h2{text-align:center; color:#D4AF37; font-size:20px; letter-spacing:3px; margin:0 0 25px;}
+body.shop-mode .sidebar{ display:block; }
+.sidebar img{width:90px; height:90px; object-fit:cover; border-radius:50%; border:2px solid #D4AF37; display:block; margin:0 auto 10px;}
+.sidebar h2{text-align:center; color:#D4AF37; font-size:20px; letter-spacing:3px; margin:0 0 25px; font-family:'Playfair Display',serif;}
 .sidebar a{
   display:block; color:white; text-decoration:none;
   padding:12px 15px; border-radius:10px; margin-bottom:8px; font-weight:600;
 }
 .sidebar a:hover, .sidebar a.active{background:#D4AF37; color:#3E2723;}
 
-/* ========== 3. MAIN + WELCOME - BROWN ✅ ========== */
-.main{margin-left:270px; flex:1; padding:20px;}
-.welcome{
-  background:linear-gradient(45deg,#5C3A21,#3E2614);
-  color:#D4AF37(252, 248, 15); padding:25px; border-radius:16px; margin-bottom:20px;
-}
-.welcome h1{margin:0; font: size 32pxpx;color:#D4AF37}
-.welcome p{margin:5px 0 0; opacity:0.9;}
-.collection-title{ color:#4E342E; text-align:center; }
+/* ========== 3. MAIN ========== */
+.main{margin-left:0; flex:1; padding:0; width:100%; min-width:0;}
+body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
+.collection-title{ color:#4E342E; text-align:center; font-family:'Playfair Display',serif; font-size:32px; margin:35px 0 10px; }
 
-/* ========== 4. HOME - FRAMES ========== */
+/* ========== 4. HERO ========== */
+.hero-banner{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #5C3A21 0%, #3E2614 50%, #2A1A0C 100%);
+}
+.hero-banner::after{
+  content:""; position:absolute; inset:14px;
+  border:1px solid rgba(212,175,55,0.55);
+  pointer-events:none;
+}
+.hero-text{
+  position:relative; z-index:2;
+  text-align:center; margin:0 auto; width:100%; max-width:750px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.hero-badge{
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(212,175,55,0.7);
+  color:#F5D67B;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 12px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+  margin-bottom: 18px;
+}
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size: 62px;
+  margin: 0;
+  line-height: 1.15;
+  color: #FFF8E7;
+  text-align: center;
+}
+.hero-text h1 span{
+  color:#D4AF37;
+  font-style: italic;
+  display:block;
+  margin-top:4px;
+}
+.hero-text p{
+  font-size: 15px;
+  margin: 18px 0 25px;
+  color: #F5EEDD;
+  font-weight:300; letter-spacing:0.5px;
+}
+.hero-buttons{ display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.hero-buttons a{ text-decoration:none; }
+.hero-btn{
+  background: linear-gradient(180deg,#F5D67B,#D4AF37);
+  color: #3E2723;
+  border: none;
+  padding: 14px 26px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  white-space:nowrap;
+}
+.hero-btn:hover{ transform: translateY(-2px); }
+.whatsapp-btn, .insta-btn{
+  background: rgba(0,0,0,0.35) !important;
+  color: #FFF8E7 !important;
+  border: 1px solid rgba(255,248,231,0.4) !important;
+  box-shadow:none !important;
+}
+.hero-stats{
+  display: flex;
+  margin-top: 30px;
+  background: rgba(0,0,0,0.40);
+  border-radius: 16px;
+  border: 1px solid rgba(212,175,55,0.4);
+  overflow:hidden;
+  max-width:560px; width:100%;
+}
+.hero-stats div{ flex:1; padding:16px 10px; min-width:0; }
+.hero-stats div:nth-child(2){ border-left:1px solid rgba(255,255,255,0.15); border-right:1px solid rgba(255,255,255,0.15); }
+.hero-stats div b{ font-size: 20px; color: #F5D67B; font-family:'Playfair Display',serif; }
+.hero-stats div span{ font-size: 11px; color:#F5EEDD; }
+
+/* ========== 5. FRAMES - ELLAM SAME SIZE ✅ ========== */
 .frames-container{
-  display:flex; flex-wrap:wrap; justify-content:center; 
-  padding:25px 0; gap:22px;
+  display:flex; flex-wrap:wrap; justify-content:center;
+  padding:25px 20px 40px; gap:22px;
 }
 .frame-card{
-  background:white; width:260px; border-radius:16px; overflow:hidden; 
-  text-align:center; padding-bottom:15px; 
+  background:white; width:260px; border-radius:16px; overflow:hidden;
+  text-align:center; padding-bottom:15px;
   box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
   transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
+  display:flex; flex-direction:column;
 }
-.frame-card:hover{transform: scale(1.06); box-shadow: 0 15px 30px rgba(92,58,33,0.30);}
-.frame-card img{width:100%; height:220px; object-fit:cover;}
-.frame-details{ padding:12px; }
-.frame-name{ color:#3E2723; font-weight:700; }
-.frame-size{ color:#999; }
-.frame-price{ color:#C9A227; font-weight:800; margin:6px 0; }
+.frame-card:hover{transform: scale(1.04); box-shadow: 0 15px 30px rgba(92,58,33,0.25); border-color:#D4AF37;}
+.frame-card img{
+  width:100%; height:260px; aspect-ratio:1/1;
+  object-fit:cover; object-position:center;
+  display:block; background:#F5E6C8;
+}
+.frame-details{ padding:12px; display:flex; flex-direction:column; flex:1; align-items:center; }
+.frame-name{ color:#3E2723; font-weight:700; font-family:'Playfair Display',serif; font-size:18px; min-height:26px; }
+/* SIZE - BLACK + GOLD BADGE ✅ */
+.frame-size{
+  color:#fff; font-size:13px; font-weight:700;
+  background:#1A1A1A; border:1px solid #D4AF37;
+  display:inline-block; padding:4px 14px; border-radius:50px;
+  margin:6px auto 2px; min-height:26px; letter-spacing:0.5px;
+}
+.frame-price{ color:#A8862B; font-weight:800; margin:6px 0; }
+/* BUY NOW - OREY LINE LA VARANUM - PIRIKA KOODATHU ✅ */
 .order-btn{
-  background:linear-gradient(45deg,#D4AF37,#B8962E); border:none; 
-  padding:10px 28px; border-radius:25px; cursor:pointer; font-weight:700; margin-top:8px;
+  background:linear-gradient(45deg,#D4AF37,#B8962E); border:none;
+  padding:11px 28px; border-radius:25px; cursor:pointer; font-weight:700; margin-top:auto; color:#3E2723;
+  white-space:nowrap !important; width:auto !important; min-width:150px !important;
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  font-size:14px !important; line-height:1 !important;
 }
 
-/* ========== 5. MY ORDERS ========== */
+/* ========== 6. MY ORDERS ========== */
 .order-card{
-  background:white; border-radius:16px; padding:18px;
-  margin-bottom:15px; display:flex; gap:15px; align-items:center;
+  background:white; border-radius:16px; padding:18px; margin:0 20px 15px;
+  display:flex; gap:15px; align-items:center;
   box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
 }
 .order-photo{ width:110px; height:110px; object-fit:cover; border-radius:10px; flex-shrink:0; }
-.order-info{ flex:1; }
+.order-info{ flex:1; min-width:0; }
 .order-info h3{ margin:0; color:#3E2723; }
 .order-info p{ margin:5px 0; color:#8D6E63; }
 .order-price{ text-align:right; }
@@ -66,273 +169,108 @@ body { margin:0; font-family:sans-serif; background:#FDF8E9; display:flex; }
 .empty-box{ text-align:center; padding:50px; background:white; border-radius:16px; }
 .empty-box h3{ color:#8D6E63; }
 
-/* ========== 6. ORDER FORM ========== */
+/* ========== 7. ORDER FORM ========== */
 .box {
   max-width: 500px; margin: 30px auto; background: white;
   padding: 30px; border-radius: 20px;
   box-shadow: 0 10px 30px rgba(92,58,33,0.15);
   border-top: 6px solid #5C3A21;
 }
-.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; }
+.box h2 { color: #5C3A21; text-align: center; margin: 0; font-size: 24px; font-family:'Playfair Display',serif; }
+.box .price { text-align: center; color: #A67C52; font-size: 18px; font-weight: bold; margin: 8px 0 25px; }
+.box .size { text-align: center; color: #888; margin-top: -18px; margin-bottom: 20px; }
+.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; font-size:14px; }
 .box input, .box textarea {
   width: 100%; padding: 13px; border: 2px solid #E8D5B7;
-  border-radius: 10px; background: #FFFBF2; outline: none;
+  border-radius: 10px; background: #FFFBF2; outline: none; font-size:15px;
 }
 .box input:focus, .box textarea:focus { border-color: #5C3A21; background: white; }
+.box textarea { height: 80px; resize: none; }
 .box button {
   width: 100%; margin-top: 25px; padding: 15px; border: none;
   border-radius: 12px; background: #5C3A21; color: white;
   font-size: 17px; font-weight: bold; cursor: pointer;
 }
-
-/* ========== 7. POPUP ========== */
-#popup{
-  display:none; position:fixed; top:0; left:0;
-  width:100%; height:100%; background:rgba(0,0,0,0.85);
-  justify-content:center; align-items:center; z-index:999;
-}
-#popup img{max-width:90%; max-height:80%; border-radius:15px; border:5px solid white;}
-#popup span{position:absolute; top:20px; right:25px; color:white; font-size:35px; cursor:pointer; font-weight:bold;}
-
-/* ========== 8. MOBILE ========== */
-@media(max-width:700px){
-  body{flex-direction:column;}
-  .sidebar{position:relative; width:auto; min-height:auto;}
-  .main{margin-left:0;}
-  .order-card{flex-direction:column; text-align:center;}
-  .order-price{text-align:center;}
-}
-#Order_form.css
-/* ========== 1. COMMON ========== */
-* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-body { margin:0; font-family:sans-serif; background:#FDF8E9; display:flex; }
-
-/* ========== 2. SIDEBAR ========== */
-.sidebar{
-  width:230px; background:#3E2723; color:white;
-  min-height:100vh; padding:20px; position:fixed; left:0; top:0;
-}
-.sidebar img{width:90px; height:90px; object-fit:cover; border-radius:10px; display:block; margin:0 auto 10px;}
-.sidebar h2{text-align:center; color:#D4AF37; font-size:20px; letter-spacing:3px; margin:0 0 25px;}
-.sidebar a{
-  display:block; color:white; text-decoration:none;
-  padding:12px 15px; border-radius:10px; margin-bottom:8px; font-weight:600;
-}
-.sidebar a:hover, .sidebar a.active{background:#D4AF37; color:#3E2723;}
-
-/* ========== 3. MAIN + WELCOME - BROWN ✅ ========== */
-.main{margin-left:270px; flex:1; padding:20px;}
-.welcome{
-  background:linear-gradient(45deg,#5C3A21,#3E2614);
-  color:white; padding:25px; border-radius:16px; margin-bottom:20px;
-}
-.welcome h1{margin:0; font-size:30px;}
-.welcome p{margin:5px 0 0; opacity:0.9;}
-.collection-title{ color:#4E342E; text-align:center; }
-
-/* ========== 4. HOME - FRAMES ========== */
-.frames-container{
-  display:flex; flex-wrap:wrap; justify-content:center; 
-  padding:25px 0; gap:22px;
-}
-.frame-card{
-  background:white; width:260px; border-radius:16px; overflow:hidden; 
-  text-align:center; padding-bottom:15px; 
-  box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
-}
-.frame-card:hover{transform: scale(1.06); box-shadow: 0 15px 30px rgba(92,58,33,0.30);}
-.frame-card img{width:100%; height:220px; object-fit:cover;}
-.frame-details{ padding:12px; }
-.frame-name{ color:#3E2723; font-weight:700; }
-.frame-size{ color:#999; }
-.frame-price{ color:#C9A227; font-weight:800; margin:6px 0; }
-.order-btn{
-  background:linear-gradient(45deg,#D4AF37,#B8962E); border:none; 
-  padding:10px 28px; border-radius:25px; cursor:pointer; font-weight:700; margin-top:8px;
-}
-
-/* ========== 5. MY ORDERS ========== */
-.order-card{
-  background:white; border-radius:16px; padding:18px;
-  margin-bottom:15px; display:flex; gap:15px; align-items:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08); border:1px solid #F5E6C8;
-}
-.order-photo{ width:110px; height:110px; object-fit:cover; border-radius:10px; flex-shrink:0; }
-.order-info{ flex:1; }
-.order-info h3{ margin:0; color:#3E2723; }
-.order-info p{ margin:5px 0; color:#8D6E63; }
-.order-price{ text-align:right; }
-.order-price h2{ color:#C9A227; margin:0; }
-.order-status{
-  background:#D4AF37; color:white; padding:5px 15px;
-  border-radius:20px; display:inline-block; font-size:13px; font-weight:700; margin-top:8px;
-}
-.empty-box{ text-align:center; padding:50px; background:white; border-radius:16px; }
-.empty-box h3{ color:#8D6E63; }
-
-/* ========== 6. ORDER FORM PAGE - UN ORDER.HTML CSS ELLAM INGA ✅ ========== */
-.order-page{ background:#FFF8E7; margin:0; padding:20px; display:block; }
-.box {
-  max-width: 500px; margin: 30px auto; background: white;
-  padding: 30px; border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(92,58,33,0.15);
-  border-top: 6px solid #5C3A21;
-}
-.box h2 { color: #5C3A21; text-align: center; margin: 0; font-size: 24px; }
-.box .price { text-align: center; color: #A67C52; font-size: 18px; font-weight: bold; margin: 8px 0 25px; }
-.box .size { text-align: center; color: #888; margin-top: -18px; margin-bottom: 20px; }
-.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; font-size: 14px; }
-.box input, .box textarea {
-  width: 100%; padding: 13px; border: 2px solid #E8D5B7;
-  border-radius: 10px; background: #FFFBF2; font-size: 15px; outline: none;
-}
-.box input:focus, .box textarea:focus { border-color: #5C3A21; background: white; }
-.box textarea { height: 80px; resize: none; }
+.box button:hover { background: #3E2614; }
+.back { display: block; text-align: center; margin-top: 15px; color: #A67C52; text-decoration: none; font-size: 14px; }
 .file-box {
   border: 2px dashed #A67C52; padding: 15px; border-radius: 10px;
   text-align: center; background: #FFFBF2; color: #5C3A21; cursor: pointer;
 }
-.box button {
-  width: 100%; margin-top: 25px; padding: 15px; border: none;
-  border-radius: 12px; background: #5C3A21; color: white;
-  font-size: 17px; font-weight: bold; cursor: pointer;
-}
-.box button:hover { background: #3E2614; }
-.back { display: block; text-align: center; margin-top: 15px; color: #A67C52; text-decoration: none; font-size: 14px; }
 
-/* ========== 7. POPUP ========== */
+/* ========== 8. POPUP ========== */
 #popup{
   display:none; position:fixed; top:0; left:0;
   width:100%; height:100%; background:rgba(0,0,0,0.85);
   justify-content:center; align-items:center; z-index:999;
 }
-#popup img{max-width:90%; max-height:80%; border-radius:15px; border:5px solid white;}
+#popup img{max-width:90%; max-height:80%; border-radius:15px; border:3px solid #D4AF37;}
 #popup span{position:absolute; top:20px; right:25px; color:white; font-size:35px; cursor:pointer; font-weight:bold;}
 
-/* ========== 8. MOBILE ========== */
-@media(max-width:700px){
-  body{flex-direction:column;}
-  .sidebar{position:relative; width:auto; min-height:auto;}
-  .main{margin-left:0;}
-  .order-card{flex-direction:column; text-align:center;}
-  .order-price{text-align:center;}
-}
-#Order.css
-/* ========== ORDER FORM PAGE ========== */
-.order-page{ background:#FFF8E7; margin:0; padding:20px; display:block; }
-.box {
-  max-width: 500px; margin: 30px auto; background: white;
-  padding: 30px; border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(92,58,33,0.15);
-  border-top: 6px solid #5C3A21;
-}
-.box h2 { color: #5C3A21; text-align: center; margin: 0; font-size: 24px; }
-.box .price { text-align: center; color: #A67C52; font-size: 18px; font-weight: bold; margin: 8px 0 25px; }
-.box .size { text-align: center; color: #888; margin-top: -18px; margin-bottom: 20px; }
-.box label { display: block; color: #5C3A21; font-weight: 700; margin: 15px 0 6px; font-size: 14px; }
-.box input, .box textarea {
-  width: 100%; padding: 13px; border: 2px solid #E8D5B7;
-  border-radius: 10px; background: #FFFBF2; font-size: 15px; outline: none;
-}
-.box input:focus, .box textarea:focus { border-color: #5C3A21; background: white; }
-.box textarea { height: 80px; resize: none; }
-.box button {
-  width: 100%; margin-top: 25px; padding: 15px; border: none;
-  border-radius: 12px; background: #5C3A21; color: white;
-  font-size: 17px; font-weight: bold; cursor: pointer;
-}
-.box button:hover { background: #3E2614; }
-.back { display: block; text-align: center; margin-top: 15px; color: #A67C52; text-decoration: none; font-size: 14px; }
-
-/* ========== ORDER STATUS COLOURS ========== */
+/* ========== 9. STATUS COLOURS ========== */
 .status-Pending{ background:#FF9800; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 .status-Confirmed{ background:#2196F3; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 .status-Shipped{ background:#9C27B0; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 .status-Delivered{ background:#4CAF50; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 .status-Cancelled{ background:#F44336; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 
-/* ========== FULL SCREEN LANDING PAGE ========== */
-.hero-banner{
-  background: linear-gradient(135deg, rgba(62,39,35,0.82), rgba(120,72,20,0.65), rgba(212,175,55,0.45)), url('/static/images/BCream.jpeg');
-  background-size: cover;
-  background-position: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #FFF8E7;
-}
-.hero-text{
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 750px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.hero-badge{
-  background: rgba(255,255,255,0.25);
-  border: 1px solid rgba(255,255,255,0.6);
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-.hero-text h1{
-  font-size: 64px;
-  margin: 0;
-  line-height: 1.1;
-  color: #4A2C0A;
-  text-shadow: 2px 2px 0px #fff, 3px 3px 15px rgba(0,0,0,0.15);
-  text-align: center;
-}
-.hero-text h1 span{
-  background: linear-gradient(45deg, #FFD700, #FFA500, #FFF3B0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-text p{
-  font-size: 18px;
-  margin: 18px 0 25px;
-  color: #FFF8E7;
-}
-.hero-buttons{ display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.hero-btn{
-  background: linear-gradient(45deg,#FFD700,#FF8C00);
-  color: #3E2723;
-  border: none;
-  padding: 16px 38px;
-  border-radius: 50px;
-  font-size: 17px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(255,140,0,0.5);
-}
-.hero-btn:hover{ transform: scale(1.08); }
-.whatsapp-btn{ background: #25D366 !important; color: white !important; }
-.hero-stats{
-  display: flex;
-  gap: 35px;
-  margin-top: 30px;
-  background: rgba(255,255,255,0.18);
-  padding: 15px 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-.hero-stats div b{ font-size: 22px; color: #FFD700; }
-.hero-stats div span{ font-size: 12px; opacity: 0.9; }
+/* ========== 10. MOBILE - PHONE LA 1 BY 1 AH ✅ ========== */
 @media(max-width:700px){
-  .hero-text h1{ font-size: 36px; }
-  .hero-stats{ gap: 18px; padding: 12px 18px; }
+  body{ flex-direction:column; }
+  .sidebar{
+    position:relative !important;
+    width:100% !important;
+    min-height:auto !important;
+    display:none !important;
+    flex-wrap:wrap; justify-content:center; gap:6px;
+    padding:12px 10px !important;
+  }
+  body.shop-mode .sidebar{ display:flex !important; }
+  .sidebar img{width:38px !important; height:38px !important; margin:0 !important;}
+  .sidebar h2{margin:0 !important; font-size:15px !important; width:100%; text-align:center;}
+  .sidebar a{padding:8px 10px !important; margin:0 !important; font-size:12px !important; display:flex !important; align-items:center; gap:4px;}
+  .main, body.shop-mode .main{
+    margin-left:0 !important;
+    width:100% !important;
+    max-width:100% !important;
+    flex:none !important;
+  }
+  .hero-banner{
+    min-height:100svh !important;
+    min-height:100vh !important;
+    padding:32px 14px !important;
+    width:100% !important;
+  }
+  .hero-banner::after{ inset:10px !important; }
+  .hero-text{ max-width:100% !important; }
+  .hero-badge{ font-size:10px !important; padding:7px 12px !important; letter-spacing:1px !important; }
+  .hero-text h1{ font-size:34px !important; line-height:1.2 !important; }
+  .hero-text p{ font-size:13px !important; padding:0 5px; }
+  .hero-buttons{ flex-direction:column !important; width:100% !important; gap:10px !important; }
+  .hero-buttons a{ width:100% !important; display:block !important; }
+  .hero-btn{ width:100% !important; justify-content:center !important; padding:13px 10px !important; font-size:13px !important; }
+  .hero-stats{ width:100% !important; }
+  .hero-stats div{ padding:12px 4px !important; }
+  .hero-stats div b{ font-size:16px !important; }
+  .hero-stats div span{ font-size:10px !important; }
+
+  /* FRAMES - PHONE LA 1 BY 1, SAME SIZE */
+  .collection-title{ font-size:22px !important; margin:20px 0 5px !important; }
+  .frames-container{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:20px !important;
+    padding:14px 16px 30px !important;
+  }
+  .frame-card{ width:100% !important; max-width:340px !important; margin:0 auto !important; }
+  .frame-card img{ height:340px !important; aspect-ratio:1/1 !important; }
+  .frame-name{ font-size:17px !important; }
+  .frame-size{ font-size:14px !important; padding:5px 16px !important; }
+  .frame-price{ font-size:16px !important; }
+  .order-btn{ padding:12px 30px !important; font-size:14px !important; width:auto !important; min-width:160px !important; white-space:nowrap !important; }
+
+  .order-card{flex-direction:column !important; text-align:center !important; margin:0 12px 14px !important;}
+  .order-price{text-align:center !important;}
+  .box{ margin:15px 12px !important; padding:20px 16px !important; width:auto !important; max-width:none !important; }
 }

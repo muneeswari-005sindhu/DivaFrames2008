@@ -78,7 +78,7 @@ body{display:flex; margin:0;}
 .sidebar a:hover{background:#D4AF37; color:#3E2723;}
 .main{margin-left:270px; flex:1; padding:20px;}
 .welcome{
-  background:linear-gradient(45deg,#5c3a21,#3E2614); !important
+  background:linear-gradient(45deg,#5c3a21,#3E2614); 
   color:white; padding:25px; border-radius:16px; margin-bottom:20px;
 }
 .welcome h1{margin:0; font-size:30px;}

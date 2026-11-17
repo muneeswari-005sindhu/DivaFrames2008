@@ -24,10 +24,13 @@ class FrameViewSet(viewsets.ModelViewSet):
 def order_page(request, frame_id):
     frame = get_object_or_404(PhotoFrame, id=frame_id)
     if request.method == 'POST':
+        phone = request.POST.get('phone')
+        # Phone ah session la save pannurom - My Orders la avanga order mattum kaata
+        request.session['customer_phone'] = phone
         Order.objects.create(
             frame=frame,
             customer_name=request.POST.get('name'),
-            phone=request.POST.get('phone'),
+            phone=phone,
             address=request.POST.get('address'),
             photo=request.FILES.get('photo'),
             quantity=1,
@@ -36,11 +39,27 @@ def order_page(request, frame_id):
         return redirect(frame.payment_link)
     
     return render(request, 'order_form.html', {'frame': frame})
-# 3.5 MY ORDERS PAGE
-def my_orders(request):
-    orders = Order.objects.all().order_by('-id')
-    return render(request, 'orders.html', {'orders': orders})
 
+# 3.5 MY ORDERS PAGE - FIXED! Customer oda order mattum kaatum
+def my_orders(request):
+    # Customer search panna phone, illana order pannum pothu save aana phone
+    phone = request.GET.get('phone') or request.session.get('customer_phone')
+
+    if phone:
+        # +91, space lam clean panni last 10 digit mattum edukurom
+        phone_clean = phone.strip().replace(' ', '').replace('+91', '')[-10:]
+        # Avanga phone ku match aana order mattum!
+        orders = Order.objects.filter(phone__endswith=phone_clean).order_by('-id')
+        # Search panna phone ah session la save pannidu
+        request.session['customer_phone'] = phone
+    else:
+        orders = []
+
+    return render(request, 'orders.html', {
+        'orders': orders,
+        'searched_phone': phone,
+        'searched': bool(phone)
+    })
 
 # 4. PAYMENT CREATE 
 def create_payment(request, id):
