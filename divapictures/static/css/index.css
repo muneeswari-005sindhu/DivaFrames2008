@@ -16,7 +16,7 @@ body.shop-mode .sidebar{ display:block; }
 .sidebar img{width:90px; height:90px; object-fit:cover; border-radius:50%; border:2px solid #D4AF37; display:block; margin:0 auto 10px;}
 .sidebar h2{text-align:center; color:#D4AF37; font-size:20px; letter-spacing:3px; margin:0 0 25px; font-family:'Playfair Display',serif;}
 .sidebar a{
-  display:block; color:white; text-decoration:none;
+  display:block; color:#FFF8E1; text-decoration:none;
   padding:12px 15px; border-radius:10px; margin-bottom:8px; font-weight:600;
 }
 .sidebar a:hover, .sidebar a.active{background:#D4AF37; color:#3E2723;}
@@ -26,7 +26,7 @@ body.shop-mode .sidebar{ display:block; }
 body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
 .collection-title{ color:#4E342E; text-align:center; font-family:'Playfair Display',serif; font-size:32px; margin:35px 0 10px; }
 
-/* ========== 4. HERO ========== */
+/* ========== 4. HERO - DEEP BROWN + CREAM + GOLDEN ========== */
 .hero-banner{
   position: relative;
   width: 100%;
@@ -36,7 +36,7 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
-  background: linear-gradient(180deg, #5C3A21 0%, #3E2614 50%, #2A1A0C 100%);
+  background: #2B1A1E;
 }
 .hero-banner::after{
   content:""; position:absolute; inset:14px;
@@ -62,7 +62,7 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
   font-size: 62px;
   margin: 0;
   line-height: 1.15;
-  color: #FFF8E7;
+  color: #FFF8E1;
   text-align: center;
 }
 .hero-text h1 span{
@@ -74,7 +74,7 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
 .hero-text p{
   font-size: 15px;
   margin: 18px 0 25px;
-  color: #F5EEDD;
+  color: #FFF8E1;
   font-weight:300; letter-spacing:0.5px;
 }
 .hero-buttons{ display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
@@ -94,9 +94,9 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
 }
 .hero-btn:hover{ transform: translateY(-2px); }
 .whatsapp-btn, .insta-btn{
-  background: rgba(0,0,0,0.35) !important;
-  color: #FFF8E7 !important;
-  border: 1px solid rgba(255,248,231,0.4) !important;
+  background: transparent !important;
+  color: #FFF8E1 !important;
+  border: 1.5px solid #FFF8E1 !important;
   box-shadow:none !important;
 }
 .hero-stats{
@@ -111,7 +111,7 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
 .hero-stats div{ flex:1; padding:16px 10px; min-width:0; }
 .hero-stats div:nth-child(2){ border-left:1px solid rgba(255,255,255,0.15); border-right:1px solid rgba(255,255,255,0.15); }
 .hero-stats div b{ font-size: 20px; color: #F5D67B; font-family:'Playfair Display',serif; }
-.hero-stats div span{ font-size: 11px; color:#F5EEDD; }
+.hero-stats div span{ font-size: 11px; color:#F5D67B; }
 
 /* ========== 5. FRAMES - ELLAM SAME SIZE ✅ ========== */
 .frames-container{
@@ -133,7 +133,6 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
 }
 .frame-details{ padding:12px; display:flex; flex-direction:column; flex:1; align-items:center; }
 .frame-name{ color:#3E2723; font-weight:700; font-family:'Playfair Display',serif; font-size:18px; min-height:26px; }
-/* SIZE - BLACK + GOLD BADGE ✅ */
 .frame-size{
   color:#fff; font-size:13px; font-weight:700;
   background:#1A1A1A; border:1px solid #D4AF37;
@@ -141,7 +140,6 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
   margin:6px auto 2px; min-height:26px; letter-spacing:0.5px;
 }
 .frame-price{ color:#A8862B; font-weight:800; margin:6px 0; }
-/* BUY NOW - OREY LINE LA VARANUM - PIRIKA KOODATHU ✅ */
 .order-btn{
   background:linear-gradient(45deg,#D4AF37,#B8962E); border:none;
   padding:11px 28px; border-radius:25px; cursor:pointer; font-weight:700; margin-top:auto; color:#3E2723;
@@ -214,7 +212,7 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
 .status-Delivered{ background:#4CAF50; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 .status-Cancelled{ background:#F44336; color:white; padding:5px 15px; border-radius:20px; font-size:13px; font-weight:700; }
 
-/* ========== 10. MOBILE - PHONE LA 1 BY 1 AH ✅ ========== */
+/* ========== 10. MOBILE ========== */
 @media(max-width:700px){
   body{ flex-direction:column; }
   .sidebar{
@@ -253,8 +251,6 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
   .hero-stats div{ padding:12px 4px !important; }
   .hero-stats div b{ font-size:16px !important; }
   .hero-stats div span{ font-size:10px !important; }
-
-  /* FRAMES - PHONE LA 1 BY 1, SAME SIZE */
   .collection-title{ font-size:22px !important; margin:20px 0 5px !important; }
   .frames-container{
     display:flex !important;
@@ -269,7 +265,6 @@ body.shop-mode .main{margin-left:230px; width:calc(100% - 230px);}
   .frame-size{ font-size:14px !important; padding:5px 16px !important; }
   .frame-price{ font-size:16px !important; }
   .order-btn{ padding:12px 30px !important; font-size:14px !important; width:auto !important; min-width:160px !important; white-space:nowrap !important; }
-
   .order-card{flex-direction:column !important; text-align:center !important; margin:0 12px 14px !important;}
   .order-price{text-align:center !important;}
   .box{ margin:15px 12px !important; padding:20px 16px !important; width:auto !important; max-width:none !important; }
